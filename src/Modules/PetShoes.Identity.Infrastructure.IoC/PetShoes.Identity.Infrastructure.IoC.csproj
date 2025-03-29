@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\PetShoes.Identity.Infrastructure.Repositories\PetShoes.Identity.Infrastructure.Repositories.csproj" />
+    <ProjectReference Include="..\PetShoes.Identity.Application\PetShoes.Identity.Application.csproj" />
+    <ProjectReference Include="..\PetShoes.Identity.Repositories\PetShoes.Identity.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

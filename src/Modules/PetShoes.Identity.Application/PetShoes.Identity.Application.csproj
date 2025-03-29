@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Marraia.Notifications" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PetShoes.Identity.Repositories\PetShoes.Identity.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

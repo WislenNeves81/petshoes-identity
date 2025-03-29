@@ -1,7 +1,11 @@
+using PetShoes.Identity.Infrastructure.IoC;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+
+new RootBootstrapper().BootstrapperRegisterServices(builder.Services);
 
 var app = builder.Build();
 
