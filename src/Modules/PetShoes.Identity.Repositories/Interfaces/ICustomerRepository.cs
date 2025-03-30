@@ -5,5 +5,7 @@ namespace PetShoes.Identity.Domain.Interfaces
     public interface ICustomerRepository
     {
         Task InsertAsync(Customer customer);
+        Task<Customer> GetByEmailAsync(string email);
+        Task<Customer> GetByCpfAsync(string cpf);
     }
 }

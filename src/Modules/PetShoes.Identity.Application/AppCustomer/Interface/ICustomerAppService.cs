@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PetShoes.Identity.Repositories.Repository;
+﻿using PetShoes.Identity.Application.AppCustomer.Input;
+using PetShoes.Identity.Application.AppCustomer.ViewModel;
 
 namespace PetShoes.Identity.Application.AppCustomer.Interface
 {
     public interface ICustomerAppService
     {
-        Task<Customer> InsertAsync(Customer customerInput);
+        Task<CustomerViewModel> InsertAsync(CustomerInput customerInput);
       
     }
 }

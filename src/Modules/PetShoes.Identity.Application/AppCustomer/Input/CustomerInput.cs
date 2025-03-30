@@ -1,4 +1,4 @@
-﻿namespace PetShoes.Identity.Application.AppCustomer.CustomerInput
+﻿namespace PetShoes.Identity.Application.AppCustomer.Input
 {
     public class CustomerInput
     {
