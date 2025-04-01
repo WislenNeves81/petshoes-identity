@@ -47,5 +47,53 @@ namespace PetShoes.Identity.Application.AppCustomer
             return customer.ToViewModel(); 
 
         }
+        public async Task<CustomerViewModel> GetCustomerByIdAsync(Guid customerId)
+        {
+
+            var customer = await _customerRepository
+                                    .GetCustomerByIdAsync(customerId)
+                                    .ConfigureAwait(false);
+
+            if (customer == null)
+                throw new Exception("Cliente não encontrado");
+
+            return customer.ToViewModel();
+        }
+        public async Task<CustomerViewModel> UpdateAsync(Guid customerId, CustomerInput customerInput)
+        {
+            var customer = await _customerRepository
+                                    .GetCustomerByIdAsync(customerId)
+                                    .ConfigureAwait(false);
+            if (customer == null)
+                throw new Exception("Cliente não encontrado");
+
+            customer.Update(customerInput.Name,
+                            customerInput.Email,
+                            customerInput.Cpf,
+                            customerInput.Phone,
+                            customerInput.City,
+                            customerInput.UF,
+                            customerInput.Password);
+            
+            await _customerRepository
+                            .UpdateAsync(customer)
+                            .ConfigureAwait(false);
+            
+            return customer.ToViewModel();
+        }
+        public async Task DeleteAsync(Guid customerId)
+        {
+            var customer = await _customerRepository
+                                    .GetCustomerByIdAsync(customerId)
+                                    .ConfigureAwait(false);
+
+            if (customer == null)
+                throw new Exception("Cliente não encontrado");
+
+            await _customerRepository
+                            .DeleteAsync(customer.Id)
+                            .ConfigureAwait(false);
+        }
+
     }
 }

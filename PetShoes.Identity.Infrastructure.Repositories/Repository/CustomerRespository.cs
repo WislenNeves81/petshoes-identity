@@ -31,5 +31,26 @@ namespace PetShoes.Identity.Infrastructure.Repositories.Repository
                             .Where(customer => customer.Identification == cpf && customer.Active == true)
                             .FirstOrDefaultAsync();
         }
+        public async Task<Customer> GetCustomerByIdAsync(Guid customerId)
+        {
+            return await Collection
+                            .AsQueryable()
+                            .Where(customer => customer.Id == customerId && customer.Active == true)
+                            .FirstOrDefaultAsync();
+        }
+        public async Task<Customer> UpdateAsync(Customer customer)
+        {
+            await Collection
+                    .ReplaceOneAsync(c => c.Id == customer.Id, customer)
+                    .ConfigureAwait(false);
+            return customer;
+        }
+        public async Task DeleteAsync(Guid customerId)
+        {
+            await Collection
+                    .UpdateOneAsync(c => c.Id == customerId,
+                                    Builders<Customer>.Update.Set(c => c.Active, false))
+                    .ConfigureAwait(false);
+        }
     }
 }

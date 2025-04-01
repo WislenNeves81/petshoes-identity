@@ -36,7 +36,26 @@ namespace PetShoes.Identity.Repositories.Repository
         public bool Active { get; set; }
         public DateTime Updated { get; set; }
         public DateTime Created { get; set; } = new DateTime();
-        
+
+        public void Update(string name,
+                           string email,
+                           string cpf,
+                           string phone,
+                           string city,
+                           string uf,
+                           string password)
+        {
+            Name = name;
+            Email = email;
+            Identification = cpf;
+            Phone = phone;
+            City = city;
+            UF = uf;
+            Password = password;
+            Updated = DateTime.Now;
+            SetPasswordEncrypt();
+        }
+
         #region Private Methods 
         private void SetDefaultValues()
         {
