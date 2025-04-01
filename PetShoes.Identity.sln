@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShoes.Identity.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShoes.Identity.Infrastructure.IoC", "src\Modules\PetShoes.Identity.Infrastructure.IoC\PetShoes.Identity.Infrastructure.IoC.csproj", "{2AC40299-A1D6-4F2B-8CF1-12153609C412}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShoes.Identity.Infrastructure.Repositories", "PetShoes.Identity.Infrastructure.Repositories\PetShoes.Identity.Infrastructure.Repositories.csproj", "{8F16908B-CD52-4512-8027-A041E3C174E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShoes.Identity.Infrastructure.Repositories", "src\Modules\PetShoes.Identity.Infrastructure.Repositories\PetShoes.Identity.Infrastructure.Repositories.csproj", "{8F16908B-CD52-4512-8027-A041E3C174E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

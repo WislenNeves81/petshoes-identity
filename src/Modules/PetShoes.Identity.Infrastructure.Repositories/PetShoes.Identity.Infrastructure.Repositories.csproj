@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Modules\PetShoes.Identity.Repositories\PetShoes.Identity.Domain.csproj" />
+    <ProjectReference Include="..\PetShoes.Identity.Repositories\PetShoes.Identity.Domain.csproj" />
   </ItemGroup>
 
 </Project>

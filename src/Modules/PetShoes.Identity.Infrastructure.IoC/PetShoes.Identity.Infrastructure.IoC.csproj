@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\PetShoes.Identity.Infrastructure.Repositories\PetShoes.Identity.Infrastructure.Repositories.csproj" />
     <ProjectReference Include="..\PetShoes.Identity.Application\PetShoes.Identity.Application.csproj" />
+    <ProjectReference Include="..\PetShoes.Identity.Infrastructure.Repositories\PetShoes.Identity.Infrastructure.Repositories.csproj" />
     <ProjectReference Include="..\PetShoes.Identity.Repositories\PetShoes.Identity.Domain.csproj" />
   </ItemGroup>
 
