@@ -4,8 +4,6 @@ namespace PetShoes.Identity.Repositories.Repository
 {
     public class Customer : Entity<Guid>
     {
-        public Customer() { }
-
         public Customer(string name,
                         string email,
                         string cpf,
@@ -61,8 +59,6 @@ namespace PetShoes.Identity.Repositories.Repository
         {
             Id = Guid.NewGuid();
             Active = true;
-            Updated = DateTime.Now;
-            Created = DateTime.Now;
         }
         private void SetUpdateValues()
         {
