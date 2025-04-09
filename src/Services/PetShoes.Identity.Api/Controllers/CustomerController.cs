@@ -35,6 +35,7 @@ namespace PetShoes.Identity.Api.Controllers
             var customer = await _customerAppService
                                             .GetCustomerByIdAsync(customerId)
                                             .ConfigureAwait(false);
+
             return Ok(customer);
         }
         [HttpPut]
@@ -46,6 +47,7 @@ namespace PetShoes.Identity.Api.Controllers
             var customer = await _customerAppService
                                             .UpdateAsync(customerId, customerInput)
                                             .ConfigureAwait(false);
+
             return Ok(customer);
         }
         [HttpDelete]
@@ -57,6 +59,7 @@ namespace PetShoes.Identity.Api.Controllers
             await _customerAppService
                     .DeleteAsync(customerId)
                     .ConfigureAwait(false);
+
             return Ok();
         }
     }
