@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShoes.Identity.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShoes.Identity.Infrastructure.Repositories", "src\Modules\PetShoes.Identity.Infrastructure.Repositories\PetShoes.Identity.Infrastructure.Repositories.csproj", "{8F16908B-CD52-4512-8027-A041E3C174E1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{EE798B24-7D95-427D-ABDA-B2C0BCA1EC0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

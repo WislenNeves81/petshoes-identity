@@ -14,4 +14,10 @@
     <ProjectReference Include="..\PetShoes.Identity.Repositories\PetShoes.Identity.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="MyProfit.Authorization">
+      <HintPath>..\..\References\MyProfit.Authorization.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

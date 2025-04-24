@@ -10,14 +10,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="8.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\PetShoes.Identity.Application\PetShoes.Identity.Application.csproj" />
     <ProjectReference Include="..\..\Modules\PetShoes.Identity.Infrastructure.IoC\PetShoes.Identity.Infrastructure.IoC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MyProfit.Authorization">
+      <HintPath>..\..\References\MyProfit.Authorization.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
