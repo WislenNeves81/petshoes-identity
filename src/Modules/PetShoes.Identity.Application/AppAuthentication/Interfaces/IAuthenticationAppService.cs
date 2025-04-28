@@ -1,5 +1,5 @@
-﻿using MyProfit.Authorization.Configurations;
-using MyProfit.Authorization.Models;
+﻿using Authorization.Configurations;
+using Authorization.Models;
 using PetShoes.Identity.Application.AppAuthentication.Inputs;
 
 namespace PetShoes.Identity.Application.AppAuthentication.Interfaces

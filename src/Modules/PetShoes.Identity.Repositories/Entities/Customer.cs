@@ -1,4 +1,5 @@
 ﻿using Marraia.MongoDb.Core;
+using PetShoes.Identity.Domain.Common.Auth;
 
 namespace PetShoes.Identity.Repositories.Repository
 {
@@ -18,10 +19,9 @@ namespace PetShoes.Identity.Repositories.Repository
             Phone = phone;
             City = city;
             UF = uf;
-            Password = password;
 
             SetDefaultValues();
-            SetPasswordEncrypt();
+            SetPasswordEncrypt(password);
         }
 
         public string Name { get; set; }
@@ -32,6 +32,7 @@ namespace PetShoes.Identity.Repositories.Repository
         public string UF { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public bool Active { get; set; }
+        public bool Admin { get; set; } = false;
         public DateTime Updated { get; set; }
         public DateTime Created { get; set; } = new DateTime();
 
@@ -49,9 +50,8 @@ namespace PetShoes.Identity.Repositories.Repository
             Phone = phone;
             City = city;
             UF = uf;
-            Password = password;
             Updated = DateTime.Now;
-            SetPasswordEncrypt();
+            SetPasswordEncrypt(password);
         }
 
         #region Private Methods 
@@ -64,10 +64,9 @@ namespace PetShoes.Identity.Repositories.Repository
         {
             Updated = DateTime.Now;
         }
-
-        private void SetPasswordEncrypt()
+        private void SetPasswordEncrypt(string password)
         {
-            //Password = BCrypt.Net.BCrypt.HashPassword(Password);
+            Password = PasswordHasher.Hash(password);
         }
         #endregion
     }

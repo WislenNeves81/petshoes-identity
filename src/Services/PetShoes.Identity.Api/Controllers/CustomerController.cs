@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PetShoes.Identity.Application.AppCustomer.Input;
 using PetShoes.Identity.Application.AppCustomer.Interface;
 
@@ -14,6 +15,7 @@ namespace PetShoes.Identity.Api.Controllers
         {
             _customerAppService = customerAppService;
         }
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
@@ -26,6 +28,8 @@ namespace PetShoes.Identity.Api.Controllers
 
             return Ok(customer);
         }
+
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
@@ -38,6 +42,8 @@ namespace PetShoes.Identity.Api.Controllers
 
             return Ok(customer);
         }
+
+        [Authorize]
         [HttpPut]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
@@ -50,6 +56,8 @@ namespace PetShoes.Identity.Api.Controllers
 
             return Ok(customer);
         }
+
+        [Authorize]
         [HttpDelete]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]

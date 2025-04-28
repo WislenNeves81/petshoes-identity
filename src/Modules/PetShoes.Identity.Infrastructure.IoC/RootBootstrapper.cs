@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using PetShoes.Identity.Infrastructure.IoC.Application;
 using PetShoes.Identity.Infrastructure.IoC.Repository;
 

@@ -9,15 +9,9 @@ namespace PetShoes.Identity.Application.AppAuthentication.Mapping
         {
             var userViewModel = new UserViewModel();
             userViewModel.Id = customer.Id;
-            //userViewModel.LegacyId = customer.LegacyId;
             userViewModel.Login = customer.Email;
             userViewModel.Name = customer.Name;
-            //userViewModel.Referral = customer.Settings.Referral;
-            //userViewModel.Role = customer.Admin ? "admin" : "user";
-            //userViewModel.ByExchange = customer.Settings.ByExchange;
-            //userViewModel.StartExchange = customer.Settings.StartExchange;
-            //userViewModel.Enterprise = customer.PersonTypeId == Domain.Entities.Enums.PersonTypes.Enterprise;
-            //userViewModel.MasterAccount = customer.MasterAccount;
+            userViewModel.Role = customer.Admin ? "admin" : "user";
 
             return userViewModel;
         }

@@ -3,8 +3,8 @@ using Marraia.Notifications.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyProfit.Authorization.Configurations;
-using MyProfit.Authorization.Models;
+using Authorization.Configurations;
+using Authorization.Models;
 using PetShoes.Identity.Application.AppAuthentication.Inputs;
 using PetShoes.Identity.Application.AppAuthentication.Interfaces;
 
@@ -31,8 +31,8 @@ namespace PetShoes.Identity.Api.Controllers
         public async Task<object> PostAuthAsync([FromBody] LoginInput loginInput, [FromServices] SigningConfigurations signingConfigurations)
         {
             var customerToken = await _authenticationAppService
-                                        .LoginAsync(loginInput, signingConfigurations)
-                                        .ConfigureAwait(false);
+                                            .LoginAsync(loginInput, signingConfigurations)
+                                            .ConfigureAwait(false);
 
             return customerToken;
         }

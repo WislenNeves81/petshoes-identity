@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using MyProfit.Authorization.Configurations;
-using MyProfit.Authorization.Models;
-using MyProfit.Authorization.Token;
+﻿using Microsoft.Extensions.Configuration;
+using Authorization.Configurations;
+using Authorization.Models;
+using Authorization.Token;
 using PetShoes.Identity.Application.AppAuthentication.Inputs;
 using PetShoes.Identity.Application.AppAuthentication.Interfaces;
 using PetShoes.Identity.Application.AppAuthentication.Mapping;
-using PetShoes.Identity.Domain.Common.Auth;
 using PetShoes.Identity.Domain.Interfaces;
 
 namespace PetShoes.Identity.Application
@@ -45,11 +43,7 @@ namespace PetShoes.Identity.Application
             var token = GenerateToken.GetToken(customerModel.Id,
                                                customerModel.Login,
                                                customerModel.Name,
-                                               //customerModel.Referral,
-                                               //customerModel.ByExchange,
-                                               //customerModel.Enterprise,
-                                               //customerModel.StartExchange,
-                                               //customerModel.Role,
+                                               customerModel.Role,
                                                tokenIssuer,
                                                tokenAudience,
                                                signingConfigurations,

@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="MyProfit.Authorization">
-      <HintPath>..\..\References\MyProfit.Authorization.dll</HintPath>
+    <Reference Include="Authorization">
+      <HintPath>..\..\..\..\Outros\myprofit-foundation-authentication\src\MyProfit.Authorization\bin\Release\net9.0\Authorization.dll</HintPath>
     </Reference>
   </ItemGroup>
 
