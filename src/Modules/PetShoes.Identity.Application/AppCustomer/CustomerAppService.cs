@@ -23,14 +23,14 @@ namespace PetShoes.Identity.Application.AppCustomer
                                     .ConfigureAwait(false);
 
             if (customer != null)
-                throw new Exception("Email já cadastrado");
+                return default!;
 
             customer = await _customerRepository
                                 .GetByCpfAsync(customerInput.Cpf)
                                 .ConfigureAwait(false);
 
             if (customer != null)
-                throw new Exception("Cpf já cadastrado");
+                return default!;
 
             customer = new Customer(customerInput.Name,
                                     customerInput.Email,
@@ -54,8 +54,8 @@ namespace PetShoes.Identity.Application.AppCustomer
                                     .GetCustomerByIdAsync(customerId)
                                     .ConfigureAwait(false);
 
-            if (customer == null)
-                throw new Exception("Cliente não encontrado");
+            if (customer is null)
+                return default!;
 
             return customer.ToViewModel();
         }
@@ -64,8 +64,8 @@ namespace PetShoes.Identity.Application.AppCustomer
             var customer = await _customerRepository
                                     .GetCustomerByIdAsync(customerId)
                                     .ConfigureAwait(false);
-            if (customer == null)
-                throw new Exception("Cliente não encontrado");
+            if (customer is null)
+                return default!;
 
             customer.Update(customerInput.Name,
                             customerInput.Email,
@@ -87,13 +87,9 @@ namespace PetShoes.Identity.Application.AppCustomer
                                     .GetCustomerByIdAsync(customerId)
                                     .ConfigureAwait(false);
 
-            if (customer == null)
-                throw new Exception("Cliente não encontrado");
-
             await _customerRepository
                             .DeleteAsync(customer.Id)
                             .ConfigureAwait(false);
         }
-
     }
 }

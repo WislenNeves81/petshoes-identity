@@ -22,6 +22,28 @@ namespace PetShoes.Identity.Tests.Services.Generate
                                         .RuleFor(c => c.Password, faker => faker.Random.AlphaNumeric(IntEight))
                                         .RuleFor(c => c.Active, true)
                                         .RuleFor(c => c.Admin, faker => faker.Random.Bool())
+                                        .RuleFor(c => c.Updated, faker => faker.Date.Past())
+                                        .RuleFor(c => c.Created, faker => faker.Date.Past())
+                                        .Generate();
+            return customer;
+        }
+        
+        public static Customer CreateCustomerObject(string name, string email, string cpf, string phone, string city, string uf, string password)
+        {
+            var customer = new Faker<Customer>(UtfType)
+                                        .StrictMode(true)
+                                        .RuleFor(c => c.Id, faker => faker.Random.Guid())
+                                        .RuleFor(c => c.Name, faker => name)
+                                        .RuleFor(c => c.Email, email)
+                                        .RuleFor(c => c.Identification, cpf)
+                                        .RuleFor(c => c.Phone, faker => faker.Person.Phone)
+                                        .RuleFor(c => c.City, faker => faker.Person.Address.City)
+                                        .RuleFor(c => c.UF, faker => faker.Person.Address.State)
+                                        .RuleFor(c => c.Password, password)
+                                        .RuleFor(c => c.Active, true)
+                                        .RuleFor(c => c.Admin, faker => faker.Random.Bool())
+                                        .RuleFor(c => c.Updated, faker => faker.Date.Past())
+                                        .RuleFor(c => c.Created, faker => faker.Date.Past())
                                         .Generate();
             return customer;
         }

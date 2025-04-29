@@ -5,6 +5,7 @@ namespace PetShoes.Identity.Repositories.Repository
 {
     public class Customer : Entity<Guid>
     {
+        public Customer(){}
         public Customer(string name,
                         string email,
                         string cpf,
