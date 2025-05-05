@@ -1,49 +1,14 @@
-using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
 using Authorization.Configurations;
 using Authorization.Extensions;
+using Microsoft.Extensions.Options;
 using PetShoes.Identity.Infrastructure.IoC;
-using Marraia.Notifications.Configurations;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
-
-#region Swagger Config  
-    builder.Services.AddSwaggerGen(swagger =>
-    {
-        swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "PetShoes Identity API", Version = "v1" });
-        swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-        {
-            Description =
-                "JWT Authorization Header - utilizado com Bearer Authentication.\r\n\r\n" +
-                "Digite 'Bearer' [espaço] e então seu token no campo abaixo.\r\n\r\n" +
-                "Exemplo (informar sem as aspas): 'Bearer 12345abcdef'",
-            Name = "Authorization",
-            In = ParameterLocation.Header,
-            Type = SecuritySchemeType.ApiKey,
-            Scheme = "Bearer",
-            BearerFormat = "JWT",
-        });
-
-        swagger.AddSecurityRequirement(new OpenApiSecurityRequirement
-       {
-           {
-               new OpenApiSecurityScheme
-               {
-                   Reference = new OpenApiReference
-                   {
-                       Type = ReferenceType.SecurityScheme,
-                       Id = "Bearer"
-                   }
-               },
-               Array.Empty<string>()
-           }
-       });
-    });
-#endregion
 
 builder.Services.AddCors(options =>
 {
@@ -70,8 +35,18 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.UseSwaggerUI(options =>
-        options.SwaggerEndpoint("/openapi/v1.json", "PetShoes Api"));
+    app.MapScalarApiReference(options =>
+    {
+        options
+            .WithTitle("PetShoes Api")
+            .WithSidebar(false);
+        options
+            .WithPreferredScheme("Bearer")
+            .WithHttpBearerAuthentication(bearer =>
+            {
+                bearer.Token = "your-dynamic-token";
+            });
+    });
 }
 
 app.UseHttpsRedirection();
