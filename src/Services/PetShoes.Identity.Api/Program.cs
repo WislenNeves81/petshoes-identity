@@ -6,6 +6,9 @@ using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Adicionando logs para facilitar a depuração
+builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddConsole());
+
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
@@ -13,25 +16,25 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
-            builder =>
-            builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
+        policy => policy.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
 });
 
 #region Autenticação  
-    var tokenConfigurations = new TokenConfigurations();
-    new ConfigureFromConfigurationOptions<TokenConfigurations>(
-       builder.Configuration.GetSection("TokenConfigurations"))
-           .Configure(tokenConfigurations);
+var tokenConfigurations = new TokenConfigurations();
+new ConfigureFromConfigurationOptions<TokenConfigurations>(
+    builder.Configuration.GetSection("TokenConfigurations"))
+    .Configure(tokenConfigurations);
 
-    builder.Services.AddJwtSecurity(tokenConfigurations);
+builder.Services.AddJwtSecurity(tokenConfigurations);
 #endregion
 
 new RootBootstrapper().BootstrapperRegisterServices(builder.Services);
 
 var app = builder.Build();
 
+// Configurando Scalar corretamente antes do Run()
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -44,11 +47,12 @@ if (app.Environment.IsDevelopment())
             .WithPreferredScheme("Bearer")
             .WithHttpBearerAuthentication(bearer =>
             {
-                bearer.Token = "your-dynamic-token";
+                bearer.Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6WyJ3aXNsZW4ubmV2ZXNAZ21haWwuY29tLmJyIiwid2lzbGVuLm5ldmVzQGdtYWlsLmNvbS5iciJdLCJqdGkiOiI1ODExOGY5Ni1lZjY0LTQ2YWUtYjA3NC1kZWI3M2MyOGM2ZjkiLCJ1c2VyTmFtZSI6Ildpc2xlbiBOZXZlcyIsImlzTWFzdGVyQWNjb3VudCI6IlRydWUiLCJyb2xlIjoidXNlciIsIm5iZiI6MTc0NjQ4OTgwMSwiZXhwIjoxNzQ5MDgxODAxLCJpYXQiOjE3NDY0ODk4MDEsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxOTQiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MTk0In0.Ctck9cx0EPEco9CZyLdJsNAHsPVJEdSNEex-jwcdvlM";
             });
     });
 }
 
+// Aplicando middlewares na ordem correta
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
 app.UseAuthentication();
